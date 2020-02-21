@@ -51,12 +51,16 @@ else
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        Console.WriteLine("Initialized");
+    }
+
+    protected override void OnParametersSet() {
+        Console.WriteLine("OnParametersSet");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var state = await AuthState.GetAuthenticationStateAsync();
-        Console.WriteLine("Auth state: {0}", state?.User?.Identity?.IsAuthenticated);
+        Console.WriteLine("OnAfterRender");
 
         await base.OnAfterRenderAsync(firstRender);
     }
