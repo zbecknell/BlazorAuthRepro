@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+@inject TestAuthenticationStateProvider Auth
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+            <Authorized>
+                <a href="javascript:void(0)" @onclick="@Auth.SignOut" class="ml-md-auto">Sign Out</a>
+            </Authorized>
+            <NotAuthorized>
+                <a href="javascript:void(0)" @onclick="@Auth.SignIn" class="ml-md-auto">Sign In</a>
+            </NotAuthorized>
+        </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
